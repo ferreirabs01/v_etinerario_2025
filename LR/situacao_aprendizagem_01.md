@@ -67,8 +67,11 @@ A interface deve ser ...
 📌 Restrições
 
 O sistema deve ser desenvolvido ...
+
 O banco de dados deve ...
+
 O sistema deve ser implantado ...
+
 O orçamento do projeto ...
 
 **4. Reflexão e Apresentação**
@@ -76,7 +79,7 @@ O orçamento do projeto ...
 Cada grupo apresentará seus requisitos e discutirá:
 ---
 |O que foi mais desafiador no levantamento de requisitos?|
---|
+|--|
 |Como garantir que um sistema atenda tanto aos requisitos funcionais quanto não funcionais?|
 |Quais dificuldades podem surgir se uma equipe de desenvolvimento não considerar as restrições do projeto?|
 
@@ -98,6 +101,6 @@ Essa situação de aprendizagem permite aos alunos vivenciar o levantamento de r
 O documento deve ser salvo pelo grupo em formato PDF.
 Constar o nome de todos os integrantes da equipe, com seu papel na atividade. P.exemplo - Bruno F... (cliente ), Matheus O....(analista de requisitos).
 
-Sera necessario postar a atividade em data futura para computar a nota nas atividades. A responsabilidade da guarda e posterior postagem sera de cada aluno.
+Será necessário postar a atividade em data futura para computar a nota nas atividades. A responsabilidade da guarda e posterior postagem será de cada aluno.
 
-***Atencao - Entrega em outros formatos serao desconsiderados***
+***Atenção - Entrega de documentos em outros formatos serão desconsiderados***
