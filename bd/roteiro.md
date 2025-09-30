@@ -266,3 +266,8 @@ mysql -u [usuário] -p[senha] < backup_escola.sql
   * **`backup_escola.sql`**: O nome do arquivo que contém o seu backup.
 
 Ao executar este comando, o MySQL lerá todos os comandos do arquivo `backup_escola.sql` (incluindo `CREATE DATABASE`, `CREATE TABLE`, `INSERT INTO`, etc.) e recriará o banco de dados `escola` exatamente como ele estava no momento do backup.
+
+
+<div align="center" style="background-color:#90EE90; color:#006400; padding:10px; border-radius:5px;">
+  **Roteiro criado por Bruno Ferreira | Atualizado em 29-setembro-2025
+</div>
