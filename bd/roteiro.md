@@ -254,7 +254,7 @@ create database escola;
 Siga a sintaxe abaixo. Lembre-se de substituir `[usuário]` pelo seu nome de usuário do banco de dados e `[senha]` pela sua senha.
 
 ```sh
-mysql -u [usuário] -p[senha] < backup_escola.sql
+mysql -u [usuário] -p[senha] [nomeBanco] < backup_escola.sql
 ```
 
 ### Explicação Detalhada do Comando
