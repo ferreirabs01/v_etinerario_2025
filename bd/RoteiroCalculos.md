@@ -1,2 +1,4 @@
->>Para verificarmos qual a data corrente
+> Para verificarmos qual a data corrente
+
+
 ``` select CURDATE()```
