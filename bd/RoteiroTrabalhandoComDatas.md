@@ -80,7 +80,96 @@ SELECT
 FROM
   alunos;
 ```
-  
+
+# 🇫 O que é uma Function (Função Armazenada)?
+
+Uma **Function** (ou Função Armazenada), em um banco de dados, é um bloco de código reutilizável que executa uma tarefa específica e, o mais importante, **sempre retorna um único valor**.
+
+Pense nela como uma "calculadora" especializada que você cria e salva.
+
+1.  Você **envia** dados para ela (através de "parâmetros", como uma `data_nascimento`).
+2.  Ela **processa** esses dados (como a `fn_calcular_idade` fez o cálculo).
+3.  Ela **devolve** um único resultado (como a `idade` 25).
+
+---
+
+## 📈 Qual a sua Usabilidade?
+
+O propósito (usabilidade) de uma Function é resolver problemas de **repetição**, **complexidade** e **manutenção** no seu código SQL.
+
+### 1. Reusabilidade (Não se Repita)
+Este é o motivo principal. Em vez de escrever o mesmo cálculo complexo (como `TIMESTAMPDIFF(...)`) em 10 queries diferentes, você o escreve **uma única vez** dentro da `FUNCTION`. Depois, você apenas "chama" a função pelo nome em todos os 10 lugares.
+
+### 2. Manutenção Centralizada
+Se a regra de negócio mudar, você só precisa alterar o código em **um lugar**: dentro da Function. Todos os 10 lugares que a utilizam são atualizados automaticamente.
+
+> **Exemplo:** Se a sua função `fn_calcular_idade` precisasse ser ajustada por causa de um fuso horário, você a alteraria uma vez, e todas as queries que a usam estariam corretas.
+
+### 3. Abstração e Simplicidade
+Ela "esconde" a complexidade. Seu comando `SELECT` fica muito mais limpo e fácil de ler para quem não precisa saber *como* o cálculo é feito.
+
+* **Complexo:**
+    ```sql
+    SELECT nome, TIMESTAMPDIFF(YEAR, data_nascimento, CURDATE()) AS idade FROM ...
+    ```
+* **Simples (com Function):**
+    ```sql
+    SELECT nome, fn_calcular_idade(data_nascimento) AS idade FROM ...
+    ```
+
+### 4. Flexibilidade de Uso
+Como ela retorna um valor, você pode usá-la em várias partes de uma query, não apenas no `SELECT`:
+
+* **No `SELECT`:** Para exibir o valor calculado.
+    ```sql
+    SELECT fn_calcular_idade(data_nascimento) ...
+    ```
+* **No `WHERE`:** Para filtrar resultados.
+    ```sql
+    WHERE fn_calcular_idade(data_nascimento) > 18
+    ```
+* **No `ORDER BY`:** Para ordenar os resultados.
+    ```sql
+    ORDER BY fn_calcular_idade(data_nascimento) DESC
+    ```
+
+---
+
+**Em resumo:** você cria uma **Function** sempre que tem um cálculo que precisa fazer repetidamente e quer poder usá-lo de forma flexível dentro dos seus comandos SQL.
+
+
+  agora vamos criar uma function para calcular idade:
+
+  ```sql
+DELIMITER //
+
+CREATE FUNCTION fn_calcular_idade(
+    p_data_nascimento DATE  -- Recebe a data de nascimento
+)
+RETURNS INT -- Informa que ela VAI RETORNAR um número inteiro
+READS SQL DATA -- Informa ao MySQL que a função apenas lê dados (boa prática)
+BEGIN
+    -- Retorna diretamente o resultado do cálculo
+    RETURN TIMESTAMPDIFF(YEAR, p_data_nascimento, CURDATE());
+END//
+
+DELIMITER ;
+
+```
+
+utilizando a function:
+
+```sql
+SELECT
+  nome,
+  email,
+  data_nascimento,
+  -- A MÁGICA ACONTECE AQUI!
+  fn_calcular_idade(data_nascimento) AS idade
+FROM
+  alunos;
+
+```
  
 
  ##modelo
