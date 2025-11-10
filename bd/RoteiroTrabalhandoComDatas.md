@@ -62,6 +62,26 @@ select a.nome, a.nome, a.email, a.data_nascimento,
 TIMESTAMPDIFF(YEAR, a.data_nascimento, CURDATE()) AS idade
 from alunos a
 ```
+resolucao da atividade de fixacao trabalhando com datas classroom:
+```sql
+SET lc_time_names = 'pt_BR';
+```
+```sql
+SELECT
+  nome,
+  -- 1. Calcula a idade exata
+  TIMESTAMPDIFF(YEAR, data_nascimento, CURDATE()) AS idade,
+
+  -- 2. Formata a data por extenso
+  DATE_FORMAT(data_nascimento, '%e de %M de %Y') AS aniversario_formatado,
+
+  -- 3. Extrai o dia da semana
+  DAYNAME(data_nascimento) AS dia_que_nasceu
+FROM
+  alunos;
+```
+  
+ 
 
  ##modelo
 ```sql
